@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Contact Me</title>
+    </head>
+
+    <body>
+        <header>
+            <h1>Contact information</h1>
+            <ul>
+                <li>Email: jaedyn.mitchell@example.com</li>
+                <li>Phone: (123) 456-7890</li>
+                <li>Address: 123 Main Street, Anytown, USA</li>
+            </ul>
+        </header>
+
+        <main>
+            <div class="main-area">
+               <section class="describe-video" id="describe-video-section">
+                   <h2>Video:</h2>
+                   
+                   <p>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/rXh8Hvo7gfs?si=xgdDLsnH8ogn5NSg"></iframe> 
+                        
+                    </p> Please dont be afraid to contact me if you have any questions or concerns!
+               </section>
+
+
+
+               <section class="Feedback" id="Feedback-form">
+
+                     <h2>Feedback Form:</h2>
+                     <form action="submit_feedback.php" name="Feedback" method="post">
+                            <p>First Name:
+                                <input type="text" name="fname" placeholder="anonymous" required><br><br>
+                            </p>
+                          
+                            <p>Last Name:
+                                <input type="text" name="lname" placeholder="anonymous" required><br><br>
+                            </p>
+
+                            <p>Email:
+                              <input type="email" name="mail" placeholder="name@domain.com" required><br><br>
+                            </p>
+
+                            <p>Would you recommend this website to a friend or colleague?
+                                <label><input type="radio" name="recommend" value="yes"> Yes</label>
+                                <label><input type="radio" name="recommend" value="no"> No</label>
+                            </p>
+
+                            <p>What is your favorite browser to use (select all that apply)?
+                                <label><input type="checkbox" name="browser" value="chrome"> Chrome</label>
+                                <label><input type="checkbox" name="browser" value="firefox"> Firefox</label>
+                                <label><input type="checkbox" name="browser" value="safari"> Safari</label>
+                                <label><input type="checkbox" name="browser" value="edge"> Edge</label>
+                            
+                            </p>
+
+                            <p>How you rate this website on a scale of 1 to 10 (1 being the lowest and 10 being the highest)?
+                                <label><input type="range" name="rating" min="1" max="10"></label>
+                            </p>
+    
+                            <label for="comment">Additional Comments:</label><br>
+                            <textarea  name="comment" rows="4" cols="50" required></textarea><br><br>
+                        
+    
+                            <p>
+                                <button type="submit" value="submit for processing">Submit</button>
+                            </p>
+                     </form>
+
+                </section>           
+            </div>
+        </main>
+    </body>
+</html>
