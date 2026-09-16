@@ -29,10 +29,10 @@
 
 
 
-               <section class="Feedback" id="Feedback-form">
+                <section class="Feedback" id="Feedback-form">
 
-                     <h2>Feedback Form:</h2>
-                     <form action="submit_feedback.php" name="Feedback" method="post">
+                    <h2>Feedback Form:</h2>
+                        <form action="submit_feedback.php" name="Feedback" method="post">
                             <p>First Name:
                                 <input type="text" name="fname" placeholder="anonymous" required><br><br>
                             </p>
@@ -45,21 +45,33 @@
                               <input type="email" name="mail" placeholder="name@domain.com" required><br><br>
                             </p>
 
+                            <p>Number:
+                                <input type="tel" name="phone" placeholder="xxx-xxx-xxxx" pattern="\d{3}-\d{3}-\d{4}" required/>
+                            </p>
+
+                            <p>How old are you?
+                                <input type="number" name="age" min="1" max="120" required>
+                                
+                            </p>
+
                             <p>Would you recommend this website to a friend or colleague?
                                 <label><input type="radio" name="recommend" value="yes"> Yes</label>
                                 <label><input type="radio" name="recommend" value="no"> No</label>
                             </p>
 
                             <p>What is your favorite browser to use (select all that apply)?
-                                <label><input type="checkbox" name="browser" value="chrome"> Chrome</label>
-                                <label><input type="checkbox" name="browser" value="firefox"> Firefox</label>
-                                <label><input type="checkbox" name="browser" value="safari"> Safari</label>
-                                <label><input type="checkbox" name="browser" value="edge"> Edge</label>
-                            
+                                <select name="browser">
+                                    <option value="chrome">Chrome</option>
+                                    <option value="firefox">Firefox</option>
+                                    <option value="safari">Safari</option>
+                                    <option value="edge">Edge</option>
+                                </select>                          
                             </p>
 
+                            
+
                             <p>How you rate this website on a scale of 1 to 10 (1 being the lowest and 10 being the highest)?
-                                <label><input type="range" name="rating" min="1" max="10"></label>
+                                <label>0<input type="range" name="rating" min="1" max="10">10</label>
                             </p>
     
                             <label for="comment">Additional Comments:</label><br>
@@ -67,10 +79,10 @@
                         
     
                             <p>
-                                <button type="submit" value="submit for processing">Submit</button>
+                                <button type="submit" value="submit for processing">Submit</button><button type="reset" value="reset">Reset</button>
                             </p>
-                     </form>
 
+                        </form>
                 </section>           
             </div>
         </main>
