@@ -47,9 +47,9 @@ header h2{
 
 
 
-#introduction-section{--pos-top: 105px; --pos-left: 52px; --font-color:var(--main-text-color); --font-size:var(--main-font-size);}
+#introduction-section{--pos-top: 60px; --pos-left: 52px; --font-color:var(--main-text-color); --font-size:var(--main-font-size);}
 #schedule-section{--pos-top: 500px; --pos-left: 52px; --font-color:var(--main-text-color); --font-size:var(--main-font-size);}
-#portfolio-section{--pos-top: 105px; --pos-left: 1135px; --font-color:var(--main-text-color); --font-size:var(--main-font-size);}
+#portfolio-section{--pos-top: 60px; --pos-left: 1135px; --font-color:var(--main-text-color); --font-size:var(--main-font-size);}
 #assignment-section{--pos-top: 500px; --pos-left: 1135px; --font-color:var(--main-text-color); --font-size:var(--main-font-size);}
 #contact-section{--pos-top: 505px; --pos-left: 400px; --font-color:var(--main-text-color); --font-size:var(--main-font-size);}
 
@@ -76,8 +76,6 @@ section{
     position:fixed;
     top: var(--pos-top);
     left: var(--pos-left);
-    width: 50%;
-    height: 50%;
     color: var(--font-color);
     font-size: var(--font-size);
     font-family: var(--main-font-family);
@@ -101,6 +99,7 @@ section h2{
     opacity: 0;
     transition: opacity 0.5s ease-in;
     border: 2px solid var(--main-text-color);
+    max-width:400px;
 }
 
 
@@ -117,6 +116,10 @@ section h2{
 #contact-section p{
     opacity: 0;
     transition: opacity 0.5s ease;
+    border: 2px solid var(--main-text-color);
+    border-radius: var(--any-border-radius);
+    padding: var(--padding);
+    background-color: var(--sb-bg-color);
 }
 
 #contact-section:hover p{
