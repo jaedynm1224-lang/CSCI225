@@ -1,0 +1,67 @@
+:root{
+    --primary-bg-color: azure;
+    --main-font-color: #333;
+    --default-text-align: center;
+    --any-border: 3px solid black;
+    --base-padding: 10px 20px;
+    --main-border-radius: 5px;
+}
+
+body{
+    margin: 30px;
+    background-image: url('../img/Health.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.header{
+    text-align: var(--default-text-align);
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+h2{
+    color: var(--main-font-color);
+    text-align: var(--default-text-align);
+    margin-bottom: 120px;
+    background-color: var(--primary-bg-color);
+    border-radius: var(--main-border-radius);
+    margin-top:0;
+    display: inline-block;
+    padding: var(--base-padding);
+    width: auto;
+    border: var(--any-border);
+}
+.box{
+    background-color: var(--primary-bg-color);
+    text-align: var(--default-text-align);
+    margin: 15px auto 15px auto;
+    color: var(--main-font-color);
+    display: block;
+    padding: var(--base-padding);
+    border-radius: var(--main-border-radius);
+    width: 320px;
+    border: var(--any-border);
+}
+#btn{
+    background-color: var(--primary-bg-color);
+    text-align: var(--default-text-align);
+    margin: 15px auto;
+    color: var(--main-font-color);
+    display:block;
+    padding: var(--base-padding);
+    border-radius: var(--main-border-radius);
+    width: 320px;
+    border: var(--any-border);
+}
+#results{
+    background-color: var(--primary-bg-color);
+    text-align: var(--default-text-align);
+    margin: 15px auto;
+    color: var(--main-font-color);
+    display: block;
+    padding: var(--base-padding);
+    border-radius: var(--main-border-radius);
+    width: 320px;
+    border: var(--any-border);
+}

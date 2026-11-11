@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>CSCI225 Homepage of Jaedyn Mitchell</title>
+        <style>
+            body {font-family: Ariel; margin: 30px;}
+            .box {margin-bottom: 15px;}
+            label{display: inline-block; width: 100px;}
+            #avatar{
+                width:100px; height: 150px;
+                background-color: green; margin-top: 20px;
+                transition: all 0.5s;
+                position:absolute;
+                left:10%;
+                top:250px;
+                border: 3px solid black;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+            
+        </style>
+        <link rel="stylesheet" href="css/health.css">
+    </head>
+    <body>
+        <div class="header">
+            <h2>BMI and Calorie Calculator</h2>
+        </div>
+
+        <div class="box"><label>Weight (kg)</label><input type ="number" id="weight"></div>
+        <div class="box"><label>Height (cm)</label><input type ="number" id="height"></div>
+        <div class="box"><label>Age:</label><input type ="number" id="age"></div>
+        <div class="box">
+            <label>Gender:</label>
+            <select id="gender">
+                <option value="Men">Men</option>
+                <option value="Women">Women</option>
+            </select>
+        </div>
+
+        <button id="btn">Calculate</button>
+
+        <div id="results" style="display:none; margin-top:20px;">
+            <p><strong>BMI:</strong><span id="bmi"></span></p>
+            <p><strong>Target Calories:</strong><span id="calories"></span> cal</p>
+            <h4>Meal plan</h4>
+            <ul id="meals"></ul>
+        </div>
+
+        <div id="avatar"></div>
+
+        <script>
+            const foodDatabase = [
+                { name: "Apple (1 medium)", cal: 95 },
+                { name: "Banana (1 medium)", cal: 105 },
+                { name: "Orange (1 medium)", cal: 62 },
+                { name: "Grapes (1 cup)", cal: 104 },
+                { name: "Strawberries (1 cup)", cal: 49 },
+                { name: "Broccoli (1 cup)", cal: 55 },
+                { name: "Carrots (1 cup)", cal: 52 },
+                { name: "Spinach (1 cup)", cal: 7 },
+                { name: "Potato (1 medium)", cal: 161 },
+                { name: "Sweet Potato (1 medium)", cal: 103 },
+                { name: "Avocado (half)", cal: 117 },
+                { name: "Chicken Breast (4oz)", cal: 165 },
+                { name: "Salmon (4oz)", cal: 235 },
+                { name: "Ground Beef 80/20 (4oz)", cal: 287 },
+                { name: "Egg (1 large)", cal: 72 },
+                { name: "Tofu (1/2 cup)", cal: 94 },
+                { name: "Black Beans (1/2 cup)", cal: 114 },
+                { name: "Lentils (1/2 cup)", cal: 115 },
+                { name: "Plain Greek Yogurt (1 cup)", cal: 100 },
+                { name: "Almonds (1 oz)", cal: 164 },
+                { name: "Peanuts (1 oz)", cal: 161 },
+                { name: "Peanut Butter (2 tbsp)", cal: 188 },
+                { name: "Brown Rice (1 cup cooked)", cal: 216 },
+                { name: "White Rice (1 cup cooked)", cal: 205 },
+                { name: "Quinoa (1 cup cooked)", cal: 222 },
+                { name: "Oats (1/2 cup dry)", cal: 150 },
+                { name: "Whole Wheat Bread (1 slice)", cal: 69 },
+                { name: "White Bread (1 slice)", cal: 75 },
+                { name: "Pasta (1 cup cooked)", cal: 220 },
+                { name: "Bagel (1 medium)", cal: 245 },
+                { name: "Flour Tortilla (8 inch)", cal: 144 },
+                { name: "Vanilla Ice Cream (1/2 cup)", cal: 137 },
+                { name: "Chocolate Chip Cookie (1 medium)", cal: 148 },
+                { name: "Potato Chips (1 oz)", cal: 152 },
+                { name: "Pretzels (1 oz)", cal: 108 },
+                { name: "Cheddar Cheese (1 oz)", cal: 113 },
+                { name: "Butter (1 tbsp)", cal: 102 },
+                { name: "Olive Oil (1 tbsp)", cal: 119 },
+                { name: "Whole Milk (1 cup)", cal: 149 },
+                { name: "Almond Milk (1 cup)", cal: 39 },
+                { name: "Orange Juice (1 cup)", cal: 112 },
+                { name: "Cola (12 oz)", cal: 140 },
+                { name: "Black Coffee (8 oz)", cal: 2 },
+                { name: "Bacon (2 slices)", cal: 86 },
+                { name: "Pork Sausage (1 link)", cal: 133 },
+                { name: "Pancakes (2 medium)", cal: 172 },
+                { name: "Waffle (1 large)", cal: 218 },
+                { name: "Honey (1 tbsp)", cal: 64 },
+                { name: "Maple Syrup (1 tbsp)", cal: 52 },
+                { name: "Cheese Pizza (1 slice)", cal: 285 }
+            ];
+
+            document.getElementById("btn").addEventListener("click", function() {
+                const w = parseFloat(document.getElementById("weight").value) 
+                const h = parseFloat(document.getElementById("height").value)
+                const age = parseInt(document.getElementById("age").value)
+                const gender = document.getElementById("gender").value
+
+                const bmi =(w/(h*h)) * 10000;
+                document.getElementById("bmi").textContent = bmi.toFixed(2);
+
+                let basic = 0;
+                if (gender === "Men"){
+                    basic = (w*10) + (h*6.25) - (age*5) + 5;
+                } else if (gender === "Women"){
+                    basic = (w*10) + (h*6.25) - (age*5) - 161;
+                }
+
+                let target = basic;
+                if (bmi >= 30){
+                    target = basic - 750;
+                }else if (bmi >= 25){
+                    target = basic - 500;
+                }
+                document.getElementById("calories").textContent = Math.round(target);
+                document.getElementById("results").style.display = "block";
+
+                const mealList = document.getElementById("meals");
+                mealList.innerHTML = "";
+
+                let totalMeals = 0;
+
+                for (let i = 0; i <foodDatabase.length; i++){
+                    let food = foodDatabase[i];
+                    if (totalMeals + food.cal <= target){
+                        let li = document.createElement("li");
+                        li.textContent = food.name + " - " + food.cal + " cal";
+                        mealList.appendChild(li);
+                        totalMeals += food.cal;
+                    }
+                }
+
+                const avatar = document.getElementById("avatar");
+                if (bmi >= 30){
+                    avatar.style.width = "160px";
+                    avatar.style.backgroundColor = "red";
+                }else if (bmi >= 25){
+                    avatar.style.width = "130px";
+                    avatar.style.backgroundColor = "orange";
+                }else{
+                    avatar.style.width = "100px";
+                    avatar.style.backgroundColor = "green";
+                }
+            });
+        </script>
+    </body>
+</html>
